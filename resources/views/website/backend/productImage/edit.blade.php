@@ -26,7 +26,7 @@
                                       <label for="brand_name" class="col-md-2 col-form-label text-md-right">Product Name</label>
 
                                         <div class="col-md-6 col-md-6">
-                                          <select class="form-control" name="product_id">
+                                          <select class="img_select_edit" name="product_id">
                                             @foreach($products as $product) 
                                               <option value="{{ $product->id }}" {{ ($product->id == $productImage->product_id) ? 'selected' : '' }}>{{ $product->product_name }}</option>
                                             @endforeach
@@ -78,4 +78,21 @@
         </div>
     </div>
 
-@endsection
+@stop
+
+
+
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+      $('.img_select_edit').select2();
+  });  
+</script>
+
+@endpush

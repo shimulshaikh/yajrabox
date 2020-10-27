@@ -4,6 +4,7 @@
     <head>
         <!-- META TAGS -->
         @include('website.backend.layouts.head')
+        @stack('css')
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">

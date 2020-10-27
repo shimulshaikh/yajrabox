@@ -21,12 +21,12 @@
                                     <div class="form-group row">
                                       <label for="brand_name" class="col-md-2 col-form-label text-md-right">Product Category</label>
 
-                                        <div class="col-md-6">
-                                          <select class="form-control" name="category_id">
-                                          @foreach($productCategorys as $product)  
-                                          <option value="{{ $product->id }}">{{ $product->brand_name }}</option>
-                                          @endforeach
-                                        </select>
+                                        <div class="col-md-6 col-md-6">
+                                          <select class="brandName_select" name="category_id">
+                                            @foreach($productCategorys as $product) 
+                                              <option value="{{ $product->id }}">{{ $product->brand_name }}</option>
+                                            @endforeach
+                                          </select>
                                                       
                                         </div>
                                     </div>
@@ -82,4 +82,20 @@
         </div>
     </div>
 
-@endsection
+@stop
+  
+
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+      $('.brandName_select').select2();
+  });  
+</script>
+
+@endpush
