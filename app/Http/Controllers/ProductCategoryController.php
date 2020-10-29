@@ -43,7 +43,7 @@ class ProductCategoryController extends Controller
                     $editUrl = route('productCategory.edit', $row->id);
                     $deleteUrl = route('productCategory.destroy', $row->id);
 
-                    return view('website.backend.productCategory.column', compact('editUrl', 'deleteUrl'));
+                    return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
                     })
                 //->removeColumn('intro')
                 ->make(true);

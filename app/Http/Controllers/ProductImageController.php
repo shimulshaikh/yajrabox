@@ -22,8 +22,7 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        $productImages = ProductImage::latest()->get();
-        return view('website.backend.productImage.index', compact('productImages'));
+        return view('website.backend.productImage.index');
     }
 
 
@@ -55,7 +54,7 @@ class ProductImageController extends Controller
                     $editUrl = route('productImage.edit', $row->id);
                     $deleteUrl = route('productImage.destroy', $row->id);
 
-                    return view('website.backend.productCategory.column', compact('editUrl', 'deleteUrl'));
+                    return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
                     })
 
                 ->make(true);

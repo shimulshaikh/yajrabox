@@ -48,7 +48,7 @@ class ProductController extends Controller
                     $editUrl = route('product.edit', $row->id);
                     $deleteUrl = route('product.destroy', $row->id);
 
-                    return view('website.backend.product.column', compact('editUrl', 'deleteUrl'));
+                    return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
                     })
                 
                 ->make(true);    

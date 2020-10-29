@@ -4,9 +4,7 @@
     <div class="main-content-part">
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#home">Home
-                    <button data-widget="remove" class="btn btn-box-tool" type="button"><i class="fa fa-times"></i></button>
-                </a>
+                <a data-toggle="tab" href="#home">Home</a>
             </li>                    
         </ul>
 

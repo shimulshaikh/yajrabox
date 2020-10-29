@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\DataTables\ProductCategoryDataTable;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth'],], function() {
 		
 		Route::resource('/productImage', ProductImageController::class);
 		Route::get('/productImagedatatable', 'ProductImageController@anyData')->name('get.productImage');
+
+		Route::resource('/customer', CustomerController::class);
  });
