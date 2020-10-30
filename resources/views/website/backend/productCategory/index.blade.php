@@ -20,7 +20,7 @@
                             </div>
                             <div class="card-body">
                                    
-                               <table id="category_table" class="table">
+                               <table id="category_table" class="table table-striped table-borderd">
                                   <thead>
                                     <tr>
                                       <th>id</th>
@@ -70,7 +70,7 @@
             $('#category_table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('get.proguctCategorys') !!}',
+                ajax: '{!! route('productCategory.index') !!}',
                 dom: 'Bfrtip',
                 columns: [
                     { data: 'id', name: 'id' },

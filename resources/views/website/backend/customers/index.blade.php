@@ -40,6 +40,7 @@
               </div>
             </div>
             <!-- End for time search -->
+
                                    
                               <table id="customer_table" class="table table-striped table-borderd">
                                 <thead>
@@ -68,6 +69,7 @@
 @stop
 
 
+
 @push('scripts')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
@@ -89,12 +91,12 @@
                 ajax: {
                     url: "{{ route('customer.index') }}",
                     type: 'GET',
-                    // Statr for date search
+                    // Statr for date range search
                     data: function (d) {
                         d.start_date = $('#start_date').val();
                         d.end_date = $('#end_date').val();
                          }
-                    // End for date search     
+                    // End for date range search     
                       },  
                 columns: [
                     { data: 'id', name: 'id' },
@@ -107,11 +109,12 @@
                 
             });
           });
-        // Statr for date search
+        // Statr for date range search
         $('#btnFiterSubmitSearch').click(function(){
             $('#customer_table').DataTable().draw(true);
         });
-        // End for date search
+        // End for date range search
 
 </script>
+
 @endpush

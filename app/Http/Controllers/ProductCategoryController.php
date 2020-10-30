@@ -19,14 +19,11 @@ class ProductCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('website.backend.productCategory.index');
-    }
+        if ($request->ajax()) {
 
-    public function anyData()
-    {
-        return Datatables::of(ProductCategory::query())
+            return Datatables::of(ProductCategory::query())
                 // ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-warning" }}')
                 ->setRowId('{{$id}}')
                 //->addColumn('intro', 'Hi {{$brand_name}}!')
@@ -47,7 +44,12 @@ class ProductCategoryController extends Controller
                     })
                 //->removeColumn('intro')
                 ->make(true);
+
+        }    
+        return view('website.backend.productCategory.index');
     }
+
+    
 
     /**
      * Show the form for creating a new resource.

@@ -20,16 +20,11 @@ class ProductImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('website.backend.productImage.index');
-    }
+        if ($request->ajax()) {
 
-
-
-    public function anyData()
-    {
-        return Datatables::of(ProductImage::query())
+            return Datatables::of(ProductImage::query())
                 ->setRowId('{{$id}}')
                 ->editColumn('created_at', function(ProductImage $productImage) {
                     return $productImage->created_at->diffForHumans();
@@ -58,6 +53,16 @@ class ProductImageController extends Controller
                     })
 
                 ->make(true);
+            
+        }    
+        return view('website.backend.productImage.index');
+    }
+
+
+
+    public function anyData()
+    {
+        
     }
 
     /**

@@ -31,13 +31,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth'],], function() {
 		Route::get('/', 'BackendController@index')->name('backend.index');
 
 		Route::resource('/productCategory', ProductCategoryController::class);
-		Route::get('/productCategorydatatable', 'ProductCategoryController@anyData')->name('get.proguctCategorys');
 
 		Route::resource('/product', ProductController::class);
-		Route::get('/productdatatable', 'ProductController@anyData')->name('get.product');
 		
 		Route::resource('/productImage', ProductImageController::class);
-		Route::get('/productImagedatatable', 'ProductImageController@anyData')->name('get.productImage');
 
 		Route::resource('/customer', CustomerController::class);
  });

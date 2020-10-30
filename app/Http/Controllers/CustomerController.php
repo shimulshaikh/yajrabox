@@ -9,6 +9,12 @@ use Redirect,Response;
 
 class CustomerController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -50,6 +56,9 @@ class CustomerController extends Controller
                     ->addIndexColumn()
                     ->make(true);
         }
+
+       
+
         return view('website.backend.customers.index');
     }
 

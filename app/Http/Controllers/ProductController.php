@@ -21,15 +21,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('website.backend.product.index');
-    }
-
-
-    public function anyData()
-    {
-
+        if ($request->ajax()) {
         return Datatables::of(Product::query())
                 ->setRowId('{{$id}}')
                 ->editColumn('created_at', function(Product $product) {
@@ -51,8 +45,13 @@ class ProductController extends Controller
                     return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
                     })
                 
-                ->make(true);    
+                ->make(true); 
+            }
+        return view('website.backend.product.index');
     }
+
+
+    
 
     
 

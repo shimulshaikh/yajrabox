@@ -20,7 +20,7 @@
                             </div>
                             <div class="card-body">
                                    
-                                   <table class="table" id="productImage_table">
+                                   <table class="table table-striped table-borderd" id="productImage_table">
                                       <thead>
                                         <tr>
                                           <th scope="col">#</th>
@@ -51,7 +51,7 @@
             $('#productImage_table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('get.productImage') !!}',
+                ajax: '{!! route('productImage.index') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'product_name', name: 'product_name' },
