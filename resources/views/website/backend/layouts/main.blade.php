@@ -51,6 +51,7 @@
             }
         }
     </script>
+    <!-- End Image upload -->
     
     @stack('scripts')
 

@@ -23,7 +23,7 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         //$customers = Customer::all();
-        //return response()->json($customers);
+        //return response()->json($request);
 
         if ($request->ajax()) {
 
@@ -42,14 +42,14 @@ class CustomerController extends Controller
             //End for date range search
 
             $customers = $customerQuery->select('*');
-
             
 
                 return Datatables::of($customers)
                     ->addColumn('action', function($data){
-                    $button = '<a href="" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Edit" class="edit btn btn-info btn-sm edit-post"><i class="far fa-edit"></i> Edit </a>';
+                    $button = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Edit" class="edit btn btn-info btn-sm editCustomer"><i class="far fa-edit"></i> Edit </a>';
                     $button .= '&nbsp;&nbsp;';
-                    $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i class="far fa-delete"></i> Delete </button>';
+                    $button .= ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$data->id.'" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteCustomer">Delete</a>';
+
                     return $button;
                 })
                     ->rawColumns(['action'])
@@ -82,16 +82,14 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->id;
-        Customer::create($request->all());
-        $customer = Customer::updateOrCreate(['id' => $id ],
+        Customer::updateOrCreate(['id' => $request->customer_id],
                 [
                     'customer_name' => $request->customer_name,
                     'email' => $request->email,
-                    'phone' => $request->phone,
-                ]);
-
-        return response()->json($customer);
+                    'phone' => $request->phone
+                ]);        
+   
+        return response()->json(['success'=>'Customer saved successfully.']);
         
     }
 
@@ -114,9 +112,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $where = array('id' => $id);   
-        $customer = Customer::where($where)->first();
 
+        $customer = Customer::find($id);
         return response()->json($customer);
     }
 
@@ -129,10 +126,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request)
     {
-        if ($request->has('id')) {
-            Customer::find()->input('id')->update($request->all());
-            return ['success'=>true, 'message'=>'Updated Successfully'];
-        }
+        
     }
 
     /**
@@ -141,11 +135,10 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        if ($request->has('id')) {
-            Customer::find()->input('id')->delete();
-            return ['success'=>true, 'message'=>'Deleted Successfully'];
-        }
+        Customer::find($id)->delete();
+     
+        return response()->json(['success'=>'Customer deleted successfully.']);
     }
 }

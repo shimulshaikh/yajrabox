@@ -19,6 +19,20 @@
                                    <a href="{{ route('product.create') }}" class="btn btn-success">Add Product</a>
                             </div>
                             <div class="card-body">
+
+                              <div class="col-md-6 col-md-6" style="margin-bottom: 20px">
+                                <select class="form-control" name="category" id="category" id="sel1">
+                                  <option>--Select Category--</option>
+                                  @foreach(\App\ProductCategory::all() as $row) 
+                                   <option value="{{ $row->id }}">{{ $row->brand_name }}</option>
+                                  @endforeach
+                                </select>                    
+                              </div>
+
+                              <div class="col-md-2">
+                                <button type="submit" id="category_filter" class="btn btn-warning btn-sm">Filter
+                                </button>
+                              </div>
                                    
                                    <table id="product_table" class="table table-striped table-borderd">
                                       <thead>
@@ -47,23 +61,43 @@
 
 
 @push('scripts')
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 <script> 
+
         $(document).ready( function () {
-            $('#product_table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('product.index') !!}',
-                columns: [
+          
+                $('#product_table').DataTable({
+                  order: [[2, 'dsc']],
+                    processing: true,
+                    serverSide: true,
+                    ajax: {
+                      url:"{{ route('product.index') }}",
+                      type: 'GET',
+                      data: function (d) {
+                        d.category = $('#category').val();
+                      }
+                    },
+
+                    columns: [
                     { data: 'id', name: 'id' },
                     { data: 'product_name', name: 'product_name' },
-                    { data: 'brand_name', name: 'brand_name' },
+                    { data: 'brand_name', name: 'brand_name', orderable: false },
                     { data: 'price', name: 'price' },
                     { data: 'product_desc', name: 'product_desc' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'updated_at', name: 'updated_at' },
-                    { data: 'actions', name: 'actions' }
-                ]
-            });
-        });
+                    { data: 'actions', name: 'actions', orderable: false, searchable: false},
+                  ]
+
+                });
+
+           });
+
+        $('#category_filter').click(function () {
+              $('#product_table').DataTable().draw(true);
+          });
+
 </script>
 @endpush
