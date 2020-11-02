@@ -191,6 +191,7 @@
               $('#customerForm').trigger("reset");
               $('#customerModal').modal('hide');
               table.draw();
+
           },
 
           error: function (data) {

@@ -21,12 +21,12 @@
                                    <table class="table">
                                       <thead>
                                         <tr>
-                                          <th scope="col">#</th>
-                                          <th scope="col">Name</th>
-                                          <th scope="col">Email</th>
-                                          <th scope="col">Roles</th>
+                                          <th>#</th>
+                                          <th>Name</th>
+                                          <th>Email</th>
+                                          <th>Roles</th>
                                           @can('edit-user') 
-                                          <th scope="col">Action</th>
+                                          <th width="20%">Action</th>
                                           @endcan
                                         </tr>
                                       </thead>

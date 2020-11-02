@@ -28,7 +28,7 @@
                                       <th>Slug</th>
                                       <th>Create Time</th>
                                       <th>Update Time</th>
-                                      <th>Action</th>
+                                      <th width="14%">Action</th>
                                     </tr>
                                   </thead>                                      
                                 </table>

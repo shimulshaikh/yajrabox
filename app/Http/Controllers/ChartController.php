@@ -6,16 +6,10 @@ use Illuminate\Http\Request;
 use App\Customer;
 use DB;
 
-class BackendController extends Controller
+class ChartController extends Controller
 {
-    public function index()
+    public function customerChart()
     {
-    	$customerData = Customer::select(\DB::raw("COUNT(*) as count"))
-                    ->whereYear('created_at', date('Y'))
-                    ->groupBy(\DB::raw("Month(created_at)"))
-                    ->pluck('count');
-
-
     	$customers = Customer::select(DB::raw("COUNT(*) as count"))
     				->whereYear('created_at', date('Y'))
     				->groupBy(DB::raw("Month(created_at)"))
@@ -31,8 +25,9 @@ class BackendController extends Controller
     	foreach ($months as $index => $month)
     	{
     		$data[$month] = $customers[$index];						
-    	}	
+    	}			
 
-        return view('website.backend.dashboard.index', compact('customerData'));
+    	view()
     }
+
 }

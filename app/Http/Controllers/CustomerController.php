@@ -87,7 +87,7 @@ class CustomerController extends Controller
                     'email' => $request->email,
                     'phone' => $request->phone
                 ]);        
-   
+        
         return response()->json(['success'=>'Customer saved successfully.']);
         
     }

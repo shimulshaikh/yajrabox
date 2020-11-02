@@ -23,13 +23,13 @@
                                    <table class="table table-striped table-borderd" id="productImage_table">
                                       <thead>
                                         <tr>
-                                          <th scope="col">#</th>
-                                          <th scope="col">Product Name</th>
-                                          <th scope="col">Title</th>
-                                          <th scope="col">Image</th>
-                                          <th scope="col">Create Time</th>
-                                          <th scope="col">Update Time</th>
-                                          <th scope="col">Action</th>
+                                          <th>#</th>
+                                          <th>Product Name</th>
+                                          <th>Title</th>
+                                          <th>Image</th>
+                                          <th>Create Time</th>
+                                          <th>Update Time</th>
+                                          <th width="14%">Action</th>
                                         </tr>
                                       </thead>
                                     </table>
