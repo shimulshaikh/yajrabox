@@ -130,7 +130,7 @@
             });
 
           var table =  $('#customer_table').DataTable({
-                order: [[1, 'asc']],
+                order: [[0, 'desc']],
                 processing: true,
                 serverSide: true,
                 ajax: {

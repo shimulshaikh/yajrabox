@@ -37,14 +37,14 @@
                                    <table id="product_table" class="table table-striped table-borderd">
                                       <thead>
                                         <tr>
-                                          <th scope="col">#</th>
-                                          <th scope="col">Product Name</th>
-                                          <th scope="col">Product Category</th>
-                                          <th scope="col">Price</th>
-                                          <th scope="col">Description</th>
-                                          <th scope="col">Create Time</th>
-                                          <th scope="col">Update Time</th>
-                                          <th scope="col">Action</th>
+                                          <th>#</th>
+                                          <th>Product Name</th>
+                                          <th>Product Category</th>
+                                          <th>Price</th>
+                                          <th>Description</th>
+                                          <th>Create Time</th>
+                                          <th>Update Time</th>
+                                          <th>Action</th>
                                         </tr>
                                       </thead>
                                     </table>

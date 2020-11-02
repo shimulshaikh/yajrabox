@@ -28,7 +28,7 @@ class CustomerController extends Controller
         if ($request->ajax()) {
 
             //Start for date range search
-            $customerQuery = Customer::query();
+            $customerQuery = Customer::query()->latest();
 
             $startDate = (!empty($_GET["start_date"])) ? ($_GET["start_date"]) : ('');
             $endDate = (!empty($_GET["end_date"])) ? ($_GET["end_date"]) : ('');
@@ -112,7 +112,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
 
-        $customer = Customer::find($id);
+        $customer = Customer::findorFail($id);
         return response()->json($customer);
     }
 
@@ -136,7 +136,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        Customer::find($id)->delete();
+        Customer::findorFail($id)->delete();
      
         return response()->json(['success'=>'Customer deleted successfully.']);
     }
