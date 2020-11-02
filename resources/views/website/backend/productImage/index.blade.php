@@ -55,13 +55,13 @@
                 serverSide: true,
                 ajax: '{!! route('productImage.index') !!}',
                 columns: [
-                    {"data": "DT_RowIndex", searchable: false},
-                    { data: 'product_name', name: 'product_name' },
+                    {"data": "DT_RowIndex", orderable: false, searchable: false},
+                    { data: 'product_name', name: 'product_name', searchable: false },
                     { data: 'img_title', name: 'img_title' },
                     { data: 'product_image', name: 'product_image' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'updated_at', name: 'updated_at' },
-                    { data: 'actions', name: 'actions' },
+                    { data: 'actions', name: 'actions', orderable: false, searchable: false },
                 ]
             });
         });

@@ -53,8 +53,7 @@ class CustomerController extends Controller
                     return $button;
                 })
                     ->rawColumns(['action'])
-                    ->addIndexColumn()
-                    ->make(true);
+                    ->addIndexColumn()->make(true);
         }
 
        

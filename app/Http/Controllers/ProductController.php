@@ -25,46 +25,19 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        
-        // if ($request->ajax()) {
-
-        //     if (!empty($request->get('category'))) {
-        //         $data = DB::table('products')
-        //                ->join('product_categories', 'products.category_id', '=', 'product_categories.id') 
-        //                ->select('products.*', 'product_categories.brand_name')
-        //                ->where('products.category_id', $request->category);
-        //                //->get(); 
-        //     }
-        //     else{
-
-        //         $data = DB::table('products')
-        //                ->join('product_categories', 'products.category_id', '=', 'product_categories.id') 
-        //                ->select('products.*', 'product_categories.brand_name');
-        //                //->get();
-        //     }
-
-        //     //return response()->json($data);
-            
-        //      return Datatables::of($data)
-
-        //         ->addColumn('actions', function($row){
-        //             $editUrl = route('product.edit', $row->id);
-        //             $deleteUrl = route('product.destroy', $row->id);
-
-        //             return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
-        //             })
-
-        //         ->make(true); 
-        // }    
-
 
         if ($request->ajax()) {
 
                 if ($request->get('category')) {
-                    $data = Product::where();
+                    $data = Product::where('category_id', '=', $request->category);
                 }
-                return Datatables::of(Product::query())
-                
+
+                else{
+                    $data = Product::query();
+                }
+
+                return Datatables::of($data)
+
                 ->setRowId('{{$id}}')
 
 
@@ -87,7 +60,7 @@ class ProductController extends Controller
                     return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
                     })
                 
-                ->make(true); 
+                ->addIndexColumn()->make(true); 
             }
 
         return view('website.backend.product.index');

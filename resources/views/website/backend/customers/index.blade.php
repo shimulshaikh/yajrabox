@@ -130,7 +130,7 @@
             });
 
           var table =  $('#customer_table').DataTable({
-                order: [[0, 'asc']],
+                order: [[1, 'asc']],
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -144,12 +144,12 @@
                     // End for date range search     
                       },  
                 columns: [
-                    { data: 'id', name: 'id' },
+                    {"data": "DT_RowIndex", orderable: false, searchable: false},
                     { data: 'customer_name', name: 'customer_name' },
                     { data: 'email', name: 'email' },
                     { data: 'phone', name: 'phone' },
                     { data: 'created_at', name: 'created_at' },
-                    { data: 'action', name: 'action' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false },
                 ],
                 
             });

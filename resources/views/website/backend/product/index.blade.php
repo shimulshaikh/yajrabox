@@ -23,8 +23,8 @@
                               <div class="col-md-6 col-md-6" style="margin-bottom: 20px">
                                 <select class="form-control" name="category" id="category" id="sel1">
                                   <option>--Select Category--</option>
-                                  @foreach(\App\ProductCategory::all() as $row) 
-                                   <option value="{{ $row->id }}">{{ $row->brand_name }}</option>
+                                  @foreach(\App\ProductCategory::all() as $category) 
+                                   <option value="{{ $category->id }}">{{ $category->brand_name }}</option>
                                   @endforeach
                                 </select>                    
                               </div>
@@ -81,9 +81,9 @@
                     },
 
                     columns: [
-                    { data: 'id', name: 'id' },
+                    {"data": "DT_RowIndex", orderable: false, searchable: false},
                     { data: 'product_name', name: 'product_name' },
-                    { data: 'brand_name', name: 'brand_name', orderable: false },
+                    { data: 'brand_name', name: 'brand_name', orderable: false, searchable: false },
                     { data: 'price', name: 'price' },
                     { data: 'product_desc', name: 'product_desc' },
                     { data: 'created_at', name: 'created_at' },

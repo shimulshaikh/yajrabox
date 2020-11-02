@@ -43,7 +43,7 @@ class ProductCategoryController extends Controller
                     return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
                     })
                 //->removeColumn('intro')
-                ->make(true);
+                ->addIndexColumn()->make(true);
 
         }    
         return view('website.backend.productCategory.index');

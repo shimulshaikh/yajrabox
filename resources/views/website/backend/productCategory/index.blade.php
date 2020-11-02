@@ -68,17 +68,18 @@
 <script> 
         $(document).ready( function () {
             $('#category_table').DataTable({
+                order: [[1, 'desc']],
                 processing: true,
                 serverSide: true,
                 ajax: '{!! route('productCategory.index') !!}',
                 dom: 'Bfrtip',
                 columns: [
-                    { data: 'id', name: 'id' },
+                    {"data": "DT_RowIndex", orderable: false, searchable: false},
                     { data: 'brand_name', name: 'brand_name' },
                     { data: 'slug', name: 'slug' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'updated_at', name: 'updated_at' },
-                    { data: 'actions', name: 'actions' },
+                    { data: 'actions', name: 'actions', orderable: false, searchable: false },
                 ],
 
                 buttons: [
