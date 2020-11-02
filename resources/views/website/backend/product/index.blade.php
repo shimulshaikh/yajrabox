@@ -22,7 +22,7 @@
 
                               <div class="col-md-6 col-md-6" style="margin-bottom: 20px">
                                 <select class="form-control" name="category" id="category" id="sel1">
-                                  <option>--Select Category--</option>
+                                  <option value="0">--Select Category--</option>
                                   @foreach(\App\ProductCategory::all() as $category) 
                                    <option value="{{ $category->id }}">{{ $category->brand_name }}</option>
                                   @endforeach
