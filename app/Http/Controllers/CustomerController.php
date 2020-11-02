@@ -48,7 +48,7 @@ class CustomerController extends Controller
                     ->addColumn('action', function($data){
                     $button = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Edit" class="edit btn btn-info btn-sm editCustomer"><i class="far fa-edit"></i> Edit </a>';
                     $button .= '&nbsp;&nbsp;';
-                    $button .= ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$data->id.'" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteCustomer">Delete</a>';
+                    $button .= '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$data->id.'" data-original-title="Delete" class="delete btn btn-danger btn-sm deleteCustomer">Delete</a>';
 
                     return $button;
                 })

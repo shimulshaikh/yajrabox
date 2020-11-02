@@ -25,6 +25,7 @@ class ProductImageController extends Controller
         if ($request->ajax()) {
 
             return Datatables::of(ProductImage::query())
+
                 ->addIndexColumn()
                 ->setRowId('{{$id}}')
                 ->editColumn('created_at', function(ProductImage $productImage) {
@@ -53,7 +54,7 @@ class ProductImageController extends Controller
                     return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
                     })
 
-                ->make(true);
+                ->addIndexColumn()->make(true);
             
         }    
         return view('website.backend.productImage.index');

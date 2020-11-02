@@ -95,6 +95,7 @@
 
            });
 
+        //For custom search
         $('#category_filter').click(function () {
               $('#product_table').DataTable().draw(true);
           });

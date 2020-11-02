@@ -26,54 +26,26 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         
-        if ($request->ajax()) {
-
-            if ((!empty($_GET["category"]))) {
-                $data = DB::table('products')
-                       ->join('product_categories', 'products.category_id', '=', 'product_categories.id') 
-                       ->select('products.*', 'product_categories.brand_name')
-                       ->where('products.category_id', $request->category);
-                       //->get(); 
-            }
-            else{
-
-                $data = DB::table('products')
-                       ->join('product_categories', 'products.category_id', '=', 'product_categories.id') 
-                       ->select('products.*', 'product_categories.brand_name');
-                       //->get();
-            }
-
-            //return response()->json($data);
-            
-             return Datatables::of($data)
-
-                ->addColumn('actions', function($row){
-                    $editUrl = route('product.edit', $row->id);
-                    $deleteUrl = route('product.destroy', $row->id);
-
-                    return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
-                    })
-
-                ->make(true); 
-        }    
-
-
         // if ($request->ajax()) {
-        // return Datatables::of(Product::query())
-        //         ->setRowId('{{$id}}')
 
+        //     if (!empty($request->get('category'))) {
+        //         $data = DB::table('products')
+        //                ->join('product_categories', 'products.category_id', '=', 'product_categories.id') 
+        //                ->select('products.*', 'product_categories.brand_name')
+        //                ->where('products.category_id', $request->category);
+        //                //->get(); 
+        //     }
+        //     else{
 
-        //         ->editColumn('created_at', function(Product $product) {
-        //             return $product->created_at->diffForHumans();
-        //         })
+        //         $data = DB::table('products')
+        //                ->join('product_categories', 'products.category_id', '=', 'product_categories.id') 
+        //                ->select('products.*', 'product_categories.brand_name');
+        //                //->get();
+        //     }
 
-        //         ->editColumn('updated_at', function(Product $product) {
-        //             return $product->updated_at->format('h:m:s');
-        //         })
-
-        //         ->addColumn('brand_name', function(Product $product) {
-        //             return $product->productCatagory->brand_name;
-        //         })
+        //     //return response()->json($data);
+            
+        //      return Datatables::of($data)
 
         //         ->addColumn('actions', function($row){
         //             $editUrl = route('product.edit', $row->id);
@@ -81,9 +53,42 @@ class ProductController extends Controller
 
         //             return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
         //             })
-                
+
         //         ->make(true); 
-        //     }
+        // }    
+
+
+        if ($request->ajax()) {
+
+                if ($request->get('category')) {
+                    $data = Product::where();
+                }
+                return Datatables::of(Product::query())
+                
+                ->setRowId('{{$id}}')
+
+
+                ->editColumn('created_at', function(Product $product) {
+                    return $product->created_at->diffForHumans();
+                })
+
+                ->editColumn('updated_at', function(Product $product) {
+                    return $product->updated_at->format('h:m:s');
+                })
+
+                ->addColumn('brand_name', function(Product $product) {
+                    return $product->productCatagory->brand_name;
+                })
+
+                ->addColumn('actions', function($row){
+                    $editUrl = route('product.edit', $row->id);
+                    $deleteUrl = route('product.destroy', $row->id);
+
+                    return view('website.backend.colmun.column', compact('editUrl', 'deleteUrl'));
+                    })
+                
+                ->make(true); 
+            }
 
         return view('website.backend.product.index');
     }

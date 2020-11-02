@@ -48,21 +48,14 @@
 @push('scripts')
 <script> 
         $(document).ready( function () {
-          var i = 1;
-            var t = $('#productImage_table').DataTable({
+          
+             $('#productImage_table').DataTable({
                 order: [[1, 'desc']],
                 processing: true,
                 serverSide: true,
                 ajax: '{!! route('productImage.index') !!}',
-                //start dynamic serial
-                "columnDefs": [{
-                  "searchable": false,
-                  "orderable": false,
-                  "targets": 0
-                }],
-                //End dynamic serial
                 columns: [
-                    { data: 'id', name: 'id' },
+                    {"data": "DT_RowIndex", searchable: false},
                     { data: 'product_name', name: 'product_name' },
                     { data: 'img_title', name: 'img_title' },
                     { data: 'product_image', name: 'product_image' },
@@ -71,14 +64,6 @@
                     { data: 'actions', name: 'actions' },
                 ]
             });
-            //start dynamic serial  
-             t.on( 'order.dt search.dt', function (){
-                  t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                      cell.innerHTML = i+1;
-                      t.cell(cell).invalidate('dom');
-                  } );
-              }).draw();
-            //End dynamic serial
         });
 </script>
 @endpush

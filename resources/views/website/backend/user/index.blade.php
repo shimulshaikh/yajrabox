@@ -44,13 +44,13 @@
                                           <td>{{ implode(',', $user->roles()->get()->pluck('name')->toArray()) }}</td>
                                           <td>
                                             @can('edit-user')
-                                              <a href="{{route('user.edit',$user->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
+                                              <a href="{{route('user.edit',$user->id)}}"><button type="button" class="btn btn-info btn-sm float-left"><i class="far fa-edit"></i>Edit</button></a>
                                             @endcan
                                             @can('delete-user')  
                                               <form action="{{route('user.destroy',$user->id)}}" method="POST" class="float-left">
                                                 @method('DELETE')
                                                 @csrf
-                                                  <button class="btn btn-warning" onclick="return confirm('Are you sure to delete')">Delete</button>
+                                                  <button class="btn btn-danger btn-sm" onclick="return confirm('Are You sure want to delete !')">Delete</button>
                                               </form>
                                             @endcan  
                                           </td>

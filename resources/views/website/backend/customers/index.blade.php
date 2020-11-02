@@ -77,32 +77,32 @@
       <div class="modal-body">
         <form id="customerForm" name="customerForm" class="form-horizontal">
                    <input type="hidden" name="customer_id" id="customer_id">
-                    <div class="form-group">
-                        <label for="customer_name" class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Enter Name" value="" maxlength="50" required="">
-                        </div>
-                    </div>
+          <div class="form-group">
+                <label for="customer_name" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-12">
+                <input type="text" class="form-control @error('customer_name') is-invalid @enderror" id="customer_name" name="customer_name" placeholder="Enter Name" value="" maxlength="50" required="">
+              </div>
+          </div>
 
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="" maxlength="50" required="">
-                        </div>
-                    </div>
+          <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-12">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="" maxlength="50" required="">
+              </div>
+          </div>
 
-                    <div class="form-group">
-                        <label for="phone" class="col-sm-2 control-label">Phone</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone" value="" maxlength="50" required="">
-                        </div>
-                    </div>
+          <div class="form-group">
+                <label for="phone" class="col-sm-2 control-label">Phone</label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone" value="" maxlength="20" required="">
+            </div>
+          </div>
       
-                    <div class="modal-footer">
-                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save changes
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save changes
                      </button>
-                    </div>
-                </form>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -185,13 +185,14 @@
           url: "{{ route('customer.store') }}",
           type: "POST",
           dataType: 'json',
+          
           success: function (data) {
      
               $('#customerForm').trigger("reset");
               $('#customerModal').modal('hide');
               table.draw();
-         
           },
+
           error: function (data) {
               console.log('Error:', data);
               $('#saveBtn').html('Save Changes');
@@ -202,9 +203,8 @@
     $('body').on('click', '.deleteCustomer', function () {
      
         var customer_id = $(this).data("id");
-        confirm("Are You sure want to delete !");
-      
-        $.ajax({
+        if (confirm("Are You sure want to delete !")) {
+            $.ajax({
             type: "DELETE",
             url: "{{ route('customer.store') }}"+'/'+customer_id,
             success: function (data) {
@@ -213,7 +213,9 @@
             error: function (data) {
                 console.log('Error:', data);
             }
-        });
+          });
+        }
+        
     });
 
  });
