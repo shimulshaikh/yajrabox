@@ -49,7 +49,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Create Time</th>
-                                    <th scope="col">Action</th>
+                                    <th width="15%">Action</th>
                                   </tr>
                                 </thead>
                               </table>    

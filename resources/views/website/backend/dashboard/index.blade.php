@@ -9,17 +9,11 @@
         </ul>
 
         <div class="tab-content">
-                <div id="home" class="tab-pane fade in active">
-                    <p><img class="img-responsive" src="{{asset('backend/dist/img/curentBulb.png')}}" style="width: 100%;"></p>
-                    <div id="chartContainer">
-                        
-                    </div>
-                </div>
-                                        
-            <!-- <div id="accountSetup" class="tab-pane fade">
-                 <h3>Account Setup</h3>
-                 <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div> -->
+            <div id="chartContainer"></div>
+                <!-- <div id="home" class="tab-pane fade in active">
+                    <p><img class="img-responsive" src="{{asset('backend/dist/img/curentBulb.png')}}" style="width: 100%;"></p> 
+                </div> -->
+                              
         </div>
     </div>
 
@@ -30,22 +24,21 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 
 <script type="text/javascript">
-    var customer = <?php echo json_encode($customerData) ?>
-     Highcharts.chart('chartContainer', {
+     var customer =  <?php echo json_encode($customerData) ?>;
+   
+    Highcharts.chart('chartContainer', {
         title: {
-            text: 'New User Growth, 2020'
+            text: 'New Customer Growth, 2020'
         },
-        subtitle: {
-            text: 'Source: positronx.io'
-        },
-        xAxis: {
-            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-                'October', 'November', 'December'
-            ]
+        // subtitle: {
+        //     text: 'Source: codechief.org'
+        // },
+         xAxis: {
+            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         },
         yAxis: {
             title: {
-                text: 'Number of New Users'
+                text: 'Number of New Customer'
             }
         },
         legend: {
@@ -59,7 +52,7 @@
             }
         },
         series: [{
-            name: 'New Users',
+            name: 'New Customer',
             data: customer
         }],
         responsive: {
@@ -76,7 +69,7 @@
                 }
             }]
         }
-    });
+});
 
 </script>
 
