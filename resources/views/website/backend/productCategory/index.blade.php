@@ -13,7 +13,7 @@
                     <div class="x_content">
                       <div class="row justity-content-center">
                         <div class="col-md-12">
-                          @include('partials.alerts')
+                          
                           <div class="card">
                             <div class="card-header" style="margin-bottom: 15px">
                                 <a href="{{ route('productCategory.create') }}" class="btn btn-success">Add Category</a> 
@@ -49,6 +49,7 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
 <!-- End for button Excel PDF CSV -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @endpush
 
 @push('scripts')
@@ -64,7 +65,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
 <!-- End for button Excel PDF CSV -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script> 
         $(document).ready( function () {
             $('#category_table').DataTable({
@@ -115,5 +116,10 @@
         });
 </script>
 
+@if(Session::has('success'))
+  <script type="text/javascript">
+    toastr.success("{!! Session::get('success') !!}");
+  </script>
+@endif
 
 @endpush
