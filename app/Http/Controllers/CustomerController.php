@@ -81,14 +81,15 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        Customer::updateOrCreate(['id' => $request->customer_id],
+        $data = Customer::updateOrCreate(['id' => $request->customer_id],
                 [
                     'customer_name' => $request->customer_name,
                     'email' => $request->email,
                     'phone' => $request->phone
                 ]);        
         
-        return response()->json(['success'=>'Customer saved successfully.']);
+        //return response()->json(['success'=>'Customer saved successfully.']);
+        return response()->json($data);
         
     }
 

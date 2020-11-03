@@ -14,6 +14,7 @@
                       <div class="row justity-content-center">
                         <div class="col-md-12">
                           @include('partials.alerts')
+                          <div id="my_div"></div>
                           <div class="card">
                             <div class="card-header" style="margin-bottom: 15px">
                                    <!-- Button trigger modal -->
@@ -112,12 +113,14 @@
 
 @push('css')
 <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
 @endpush
 
 @push('scripts')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
 
 <script type="text/javascript">
   
@@ -190,7 +193,14 @@
      
               $('#customerForm').trigger("reset");
               $('#customerModal').modal('hide');
+              $('#my_div').html(data);
               table.draw();
+
+              iziToast.success({
+                title: 'Customer Saved successfully',
+                message: '{{ Session('success') }}',
+                position: 'bottomRight'
+              });
 
           },
 
@@ -210,6 +220,12 @@
             url: "{{ route('customer.store') }}"+'/'+customer_id,
             success: function (data) {
                 table.draw();
+
+                iziToast.success({
+                title: 'Customer Deleted Successfully',
+                message: '{{ Session('success') }}',
+                position: 'bottomRight'
+                });
             },
             error: function (data) {
                 console.log('Error:', data);

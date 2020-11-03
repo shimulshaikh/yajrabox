@@ -10,7 +10,7 @@
 
         <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-                    <!-- <p><img class="img-responsive" src="{{asset('backend/dist/img/curentBulb.png')}}" style="width: 100%;"></p> -->
+                    <p><img class="img-responsive" src="{{asset('backend/dist/img/curentBulb.png')}}" style="width: 100%;"></p>
                     <div id="chartContainer">
                         
                     </div>
