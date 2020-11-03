@@ -9,11 +9,10 @@
         </ul>
 
         <div class="tab-content">
-            <div id="chartContainer"></div>
-                <!-- <div id="home" class="tab-pane fade in active">
-                    <p><img class="img-responsive" src="{{asset('backend/dist/img/curentBulb.png')}}" style="width: 100%;"></p> 
-                </div> -->
-                              
+            <div id="chartContainer" style="margin-bottom: 15px;"></div>              
+            <div style="height: 400px; width: 900px; margin: auto;">
+                <canvas id="barChartProduct"></canvas>
+            </div>
         </div>
     </div>
 
@@ -22,7 +21,10 @@
 
 @push('scripts')
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
 
+
+<!-- Start HighChart -->
 <script type="text/javascript">
      var customer =  <?php echo json_encode($customerData) ?>;
    
@@ -70,7 +72,39 @@
             }]
         }
 });
-
 </script>
+<!-- End HighChart -->
+
+<!-- Start Bar chart -->
+<script type="text/javascript">
+    $(function(){
+        var product =  <?php echo json_encode($productData) ?>;
+            var barCanvas = $("#barChartProduct");
+            var barChartProduct = new Chart(barCanvas, {
+                type: 'bar',
+                data: {
+                    labels:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    datasets: [{
+                        label: 'New product Growth',
+                        data: product,
+                        backgroundColor:['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'purple', 'pink', 'silver', 'gold', 'brown']
+                    }]
+                },
+
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+
+    })
+       
+</script>
+<!-- End Bar chart -->
 
 @endpush
