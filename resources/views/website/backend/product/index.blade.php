@@ -13,7 +13,6 @@
                     <div class="x_content">
                       <div class="row justity-content-center">
                         <div class="col-md-12">
-                          @include('partials.alerts')
                           <div class="card">
                             <div class="card-header" style="margin-bottom: 15px">
                                    <a href="{{ route('product.create') }}" class="btn btn-success">Add Product</a>
@@ -63,6 +62,7 @@
 @push('scripts')
 
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 <script> 
 
@@ -101,4 +101,13 @@
           });
 
 </script>
+
+@if(Session::has('success'))
+  <script type="text/javascript">
+    swal("Great Job!", "{!! Session::get('success') !!}", "success",{
+      button:"OK",
+    })
+  </script>
+@endif
+
 @endpush
