@@ -18,7 +18,7 @@
                             <div class="card-header" style="margin-bottom: 15px">
                                 <a href="{{ route('productCategory.create') }}" class="btn btn-success">Add Category</a> 
                             </div>
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                    
                                <table id="category_table" class="table table-striped table-borderd">
                                   <thead>
@@ -83,7 +83,7 @@
                     { data: 'actions', name: 'actions', orderable: false, searchable: false },
                 ],
 
-                buttons: [
+                 buttons: [
                       
                         {
                         extend: 'copyHtml5',
@@ -109,8 +109,16 @@
                           }
                         },
 
+                        {
+                          extend: 'csvHtml5',
+                          
+                          exportOptions: {
+                              columns: ':visible'
+                          }
+                        },
+
                        'colvis'
-                    ]
+                    ],
 
             });
         });

@@ -33,7 +33,7 @@ class ProductController extends Controller
                 }
 
                 else{
-                    $data = Product::query();
+                    $data = Product::query()->latest();
                 }
 
                 return Datatables::of($data)

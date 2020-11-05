@@ -9,10 +9,14 @@
         </ul>
 
         <div class="tab-content">
-            <div id="chartContainer" style="margin-bottom: 15px;"></div>              
+            <!-- For Highchart -->
+            <div id="chartContainer" style="margin-bottom: 15px;"></div>
+
+            <!-- For Barchart -->
             <div style="height: 400px; width: 900px; margin: auto;">
                 <canvas id="barChartProduct"></canvas>
             </div>
+
         </div>
     </div>
 
@@ -30,7 +34,7 @@
    
     Highcharts.chart('chartContainer', {
         title: {
-            text: 'New Customer Growth, 2020'
+            text: 'New Customer Growth, {{ now()->year }}'
         },
         // subtitle: {
         //     text: 'Source: codechief.org'
@@ -85,7 +89,7 @@
                 data: {
                     labels:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                     datasets: [{
-                        label: 'New product Growth',
+                        label: 'New product Growth {{ now()->year }}',
                         data: product,
                         backgroundColor:['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'purple', 'pink', 'silver', 'gold', 'brown']
                     }]

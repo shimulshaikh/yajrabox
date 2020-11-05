@@ -18,7 +18,7 @@ class ProductTableSeeder extends Seeder
         
         $faker = Faker::create();
 
-        foreach (range(1, 100) as $index)
+        foreach (range(1, 1000) as $index)
         {
         	DB::table('products')->insert([
 	            'product_name' => $faker->name,
@@ -26,8 +26,8 @@ class ProductTableSeeder extends Seeder
 	            'price' => $faker->numberBetween(1000, 10000),
 	            'category_id' => App\ProductCategory::inRandomOrder()->first()->id,
 	            'slug' => $faker->name,
-                'created_at' => $faker->dateTimeBetween('-3 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-3 years', 'now'),
+                'created_at' => $faker->dateTimeBetween('-2 years', 'now'),
+                'updated_at' => $faker->dateTimeBetween('-2 years', 'now'),
         	]);
         }
     }

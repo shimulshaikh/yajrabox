@@ -44,12 +44,12 @@
                               <table id="customer_table" class="table table-striped table-borderd">
                                 <thead>
                                   <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Create Time</th>
-                                    <th width="15%">Action</th>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Create Time</th>
+                                    <th>Action</th>
                                   </tr>
                                 </thead>
                               </table>    

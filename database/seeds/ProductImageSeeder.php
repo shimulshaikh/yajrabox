@@ -17,7 +17,7 @@ class ProductImageSeeder extends Seeder
         
         $faker = Faker::create();
 
-        foreach (range(1, 100) as $index)
+        foreach (range(1, 1000) as $index)
         {
         	DB::table('product_images')->insert([
 	            'img_title' => $faker->name,

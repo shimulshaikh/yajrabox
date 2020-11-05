@@ -18,7 +18,7 @@
                             <div class="card-header" style="margin-bottom: 15px">
                               <a href="{{ route('productImage.create') }}" class="btn btn-success">Add Image</a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                    
                                    <table class="table table-striped table-borderd" id="productImage_table">
                                       <thead>

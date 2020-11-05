@@ -23,7 +23,7 @@ class ProductCategoryController extends Controller
     {
         if ($request->ajax()) {
 
-            return Datatables::of(ProductCategory::query())
+            return Datatables::of(ProductCategory::query()->latest())
                 // ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-warning" }}')
                 ->setRowId('{{$id}}')
                 //->addColumn('intro', 'Hi {{$brand_name}}!')

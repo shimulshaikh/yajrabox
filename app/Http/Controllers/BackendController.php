@@ -21,8 +21,7 @@ class BackendController extends Controller
         $productData = Product::select(\DB::raw("COUNT(*) as count"))
                     ->whereYear('created_at', date('Y'))
                     ->groupBy(\DB::raw("Month(created_at)"))
-                    ->pluck('count');            
-        //$products = Product::all();            
+                    ->pluck('count');     
 
         return view('website.backend.dashboard.index', compact('customerData','productData'));
     }

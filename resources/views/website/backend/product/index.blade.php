@@ -17,7 +17,7 @@
                             <div class="card-header" style="margin-bottom: 15px">
                                    <a href="{{ route('product.create') }}" class="btn btn-success">Add Product</a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
 
                               <div class="col-md-6 col-md-6" style="margin-bottom: 20px">
                                 <select class="form-control" name="category" id="category" id="sel1">

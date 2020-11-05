@@ -18,7 +18,7 @@ class CustomerSeeder extends Seeder
         foreach (range(1, 1000) as $index)
         {
         	DB::table('customers')->insert([
-	            'customer_name' => $faker->randomElement(['Jon', 'Kabir', 'Riad', 'Rocky', 'Robi', 'Babu', 'Repon', 'Shipon' ]),
+	            'customer_name' => $faker->name,
 	            'email' => $faker->email,
 	            'phone' => $faker->e164PhoneNumber,
                 'created_at' => $faker->dateTimeBetween('-3 years', 'now'),

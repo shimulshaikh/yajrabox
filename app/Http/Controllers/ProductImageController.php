@@ -24,7 +24,7 @@ class ProductImageController extends Controller
     {
         if ($request->ajax()) {
 
-            return Datatables::of(ProductImage::query())
+            return Datatables::of(ProductImage::query()->latest())
             
                 ->setRowId('{{$id}}')
                 ->editColumn('created_at', function(ProductImage $productImage) {
